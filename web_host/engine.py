@@ -239,6 +239,15 @@ def _apply_chapter_import_hooks(chapter_id: str, state: dict[str, Any]) -> None:
     Without this translation, a Kara who died on the highway in chapter 13 can
     incorrectly reappear when chapter 30 begins.
     """
+    if chapter_id == "ch32_battle_for_detroit":
+        # Chapter 32 defaults to a peaceful Markus-led demonstration. If
+        # chapter 31 was skipped (both leads dead), its strategy export is
+        # absent and that default would bring Markus back to life. North is
+        # the only possible movement leader after his death, irrespective of
+        # whether chapter 31 produced its usual strategy export.
+        if state.get("ch30_markus_alive") is False:
+            state["ch31_markus_strategy"] = "north_attacks"
+        return
     if chapter_id != "ch30_crossroads":
         return
 
