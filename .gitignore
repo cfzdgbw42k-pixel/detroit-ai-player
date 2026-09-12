@@ -20,3 +20,6 @@ __pycache__/
 
 # 实验结果：本地产物，不入库（仅保留目录内的 CLAUDE.md 说明）
 04_execution/results/*.json
+web_host/saves/
+web_host/.server.lock
+web_host/.server.port
